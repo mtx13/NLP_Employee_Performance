@@ -93,5 +93,3 @@ Custom LabelEncoder from [StackOverflow](https://stackoverflow.com/questions/513
 Other acknowledgements of code leveraged via Stackoverflow are documented within the code itself. 
 
 
-> <div class="alert alert-block alert-info">
-<b>Tip:</b> Use blue boxes (alert-info) for tips and notes.</div>
