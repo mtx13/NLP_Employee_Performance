@@ -54,7 +54,7 @@ The following libraries were installed as part of this project:
 
 For my final capstone project, I wanted to focus on NLP and the analysis employee performance ratings which is related to some of my current professional projects. 
 
-Using actual employee performance feedback and ratings was not an option so I began my search for publicly available data and found a dataset on [Kaggle](https://www.kaggle.com/datasets/fiodarryzhykau/employee-review). That work focused on testing classic machine learning algorithms to determine which could best predict the performance category. 
+Using actual employee performance feedback and ratings was not an option so I began my search for publicly available data and found a dataset on [Kaggle](https://www.kaggle.com/datasets/fiodarryzhykau/employee-review). That work focused on testing classic machine learning algorithms to determine which algorithm could best predict the employee's performance rating using the feedback comments provided by the employer.  Performance ratings/categories are listed [below](#categories).
 
 My goal was to extend beyond that work and include a sentiment score and test an ordinal classifier to see if I could improve on the accuracy of the model. I used XGBoost throughout my testing since the focus was on the sentiment scoring and ordinal and not testing ML algorithm performance. Sentiment Scoring was generated using [Flair](https://www.analyticsvidhya.com/blog/2019/02/flair-nlp-library-python/). The OrdinalClassifer used was provided by Muhammad Assagaf was dowloaded from [Medium.com](https://medium.com/towards-data-science/simple-trick-to-train-an-ordinal-regression-with-any-classifier-6911183d2a3c)
 
@@ -77,7 +77,7 @@ Jupyter Notebooks:
 
 - Employee_Feedback_Sentiment_Analysis.ipynb
   - Model that does it all.  
-
+---
 ## Data Files <a name="data"></a>
 These two files were joined into a single dataset and split into train/test within the code. 
 - employee_review_mturk_dataset_test_v6_kaggle.csv
@@ -90,22 +90,26 @@ The data files retrieved from Kaggle have 6 columns:
  - feedback text
  - reviewed (was the performance rating reviewed)
  - adjusted (was the performance rating adjusted)
-
+ 
+ 
+---
 ## Target Values - Employee Performance Ratings <a name="categories"></a>
 
 The target 'y' value was the performance rating. It was represented as both an ordered list and as a nine-box matrix. 
 
 Categories were ordered as follows: 
-Category 1: 'Risk' (Low performance, Low potential)
-Category 2: 'Average performer' (Moderate performance, Low potential)
-Category 3: 'Solid Performer' (High performance, Low potential)
-Category 4: 'Inconsistent Player' (Low performance, Moderate potential)
-Category 5: 'Core Player' (Moderate performance, Moderate potential)
-Category 6: 'High Performer' (High performance, Moderate potential)
-Category 7: 'Potential Gem' (Low performance, High potential)
-Category 8: 'High Potential' (Moderate performance, High potential)
-Category 9: 'Star' (High performance, High potential)
+- Category 1: 'Risk' (Low performance, Low potential)
+- Category 2: 'Average performer' (Moderate performance, Low potential)
+- Category 3: 'Solid Performer' (High performance, Low potential)
+- Category 4: 'Inconsistent Player' (Low performance, Moderate potential)
+- Category 5: 'Core Player' (Moderate performance, Moderate potential)
+- Category 6: 'High Performer' (High performance, Moderate potential)
+- Category 7: 'Potential Gem' (Low performance, High potential)
+- Category 8: 'High Potential' (Moderate performance, High potential)
+- Category 9: 'Star' (High performance, High potential)
 
+
+And represented in this nine-box matrix:
 
 ![NineBoxMatrix](images/ninebox_matrix.png)
 
@@ -117,6 +121,7 @@ Category 9: 'Star' (High performance, High potential)
 
 Addition of the sentiment scoring increase the weighted f1 score by 22%. Inclusion of the Ordinal Classifier actually dropped the score. The performance categories were presented in the data as a nine-box matrix and also as ordinal numbers. This project seems to indicate that performance is best represented as that nine-box matrix rather than an ordered list. 
 
+A full discussion of the results can be found at the blog post available [here](https://medium.com/@marcellatietjen/nlp-and-employee-performance-ratings-9d37956c388e).
 
 ---
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
