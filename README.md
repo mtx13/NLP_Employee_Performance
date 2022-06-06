@@ -6,8 +6,10 @@ Predicting employee performance rating based on the feedback text that was provi
 1. [Installation](#installation)
 2. [Project Motivation](#motivation)
 3. [File Descriptions](#files)
-4. [Results](#results)
-5. [Licensing, Authors, and Acknowledgements](#licensing)
+4. [Data Files](#data)
+5. [Target Values - Employee Performance Rating](#categories)
+6. [Results](#results)
+7. [Licensing, Authors, and Acknowledgements](#licensing)
 
 ---
 
@@ -54,11 +56,7 @@ For my final capstone project, I wanted to focus on NLP and the analysis employe
 
 Using actual employee performance feedback and ratings was not an option so I began my search for publicly available data and found a dataset on [Kaggle](https://www.kaggle.com/datasets/fiodarryzhykau/employee-review). That work focused on testing classic machine learning algorithms to determine which could best predict the performance category. 
 
-My goal was to extend beyond that work and include a sentiment score and test an ordinal classifier to see if I could improve on the accuracy of the model. I used XGBoost throughout my testing since the focus was on the sentiment scoring and ordinal. Sentiment Scoring was generated using Flair. The OrdinalClassifer used was provided by Muhammad Assagaf was dowloaded from [Medium.com](https://medium.com/towards-data-science/simple-trick-to-train-an-ordinal-regression-with-any-classifier-6911183d2a3c)
-
-![Happy Christmas](images/ninebox_matrix.png)
-
-
+My goal was to extend beyond that work and include a sentiment score and test an ordinal classifier to see if I could improve on the accuracy of the model. I used XGBoost throughout my testing since the focus was on the sentiment scoring and ordinal and not testing ML algorithm performance. Sentiment Scoring was generated using [Flair](https://www.analyticsvidhya.com/blog/2019/02/flair-nlp-library-python/). The OrdinalClassifer used was provided by Muhammad Assagaf was dowloaded from [Medium.com](https://medium.com/towards-data-science/simple-trick-to-train-an-ordinal-regression-with-any-classifier-6911183d2a3c)
 
 ---
 ## File Descriptions <a name="files"></a>
@@ -67,27 +65,57 @@ There are 4 Jupyter notebooks associated with this project and 2 data files down
 
 Jupyter Notebooks:
 - Sentiment_Scoring_Analysis.ipynb
+  -  A comparison of Vader, TextBlob & Flair to determine which sentiment scoring method is best suited for the project. 
+  -  Sample phrases were tested and manually inspected. Flair was chosen and used in the final model.
+  
 - EDA_Prepare_Data.ipynb
+  - Prepare data for exploratory analysis. 
+  - Sentiment scores are added to each sentence and data exported to ./data/feedback.csv
+    
 - EDA_NLP_Feedback.ipynb
-- Employee_Feedback_Sentiment_Analysis.ipynb
+  - Inspection of the data and visualizations to reveal necessary cleansing, determine accuracy measurements and identify missing data.
 
-Data Files:
+- Employee_Feedback_Sentiment_Analysis.ipynb
+  - Model that does it all.  
+
+## Data Files <a name="data"></a>
+These two files were joined into a single dataset and split into train/test within the code. 
 - employee_review_mturk_dataset_test_v6_kaggle.csv
 - employee_review_mturk_dataset_v10_kaggle.csv
 
-The data files retrieved from Kaggle has 6 columns:
+The data files retrieved from Kaggle have 6 columns:
  - unique id
  - employee name
- - nine-box performance descriptor
+ - nine-box performance rating
  - feedback text
  - reviewed (was the performance rating reviewed)
  - adjusted (was the performance rating adjusted)
+
+## Target Values - Employee Performance Ratings <a name="categories"></a>
+
+The target 'y' value was the performance rating. It was represented as both an ordered list and as a nine-box matrix. 
+
+Categories were ordered as follows: 
+Category 1: 'Risk' (Low performance, Low potential)
+Category 2: 'Average performer' (Moderate performance, Low potential)
+Category 3: 'Solid Performer' (High performance, Low potential)
+Category 4: 'Inconsistent Player' (Low performance, Moderate potential)
+Category 5: 'Core Player' (Moderate performance, Moderate potential)
+Category 6: 'High Performer' (High performance, Moderate potential)
+Category 7: 'Potential Gem' (Low performance, High potential)
+Category 8: 'High Potential' (Moderate performance, High potential)
+Category 9: 'Star' (High performance, High potential)
+
+
+![NineBoxMatrix](images/ninebox_matrix.png)
+
+
 
 
 ---
 ## Results<a name="results"></a>
 
-
+Addition of the sentiment scoring increase the weighted f1 score by 22%. Inclusion of the Ordinal Classifier actually dropped the score. The performance categories were presented in the data as a nine-box matrix and also as ordinal numbers. This project seems to indicate that performance is best represented as that nine-box matrix rather than an ordered list. 
 
 
 ---
