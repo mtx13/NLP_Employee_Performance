@@ -56,7 +56,7 @@ Using actual employee performance feedback and ratings was not an option so I be
 
 My goal was to extend beyond that work and include a sentiment score and test an ordinal classifier to see if I could improve on the accuracy of the model. I used XGBoost throughout my testing since the focus was on the sentiment scoring and ordinal. Sentiment Scoring was generated using Flair. The OrdinalClassifer used was provided by Muhammad Assagaf was dowloaded from [Medium.com](https://medium.com/towards-data-science/simple-trick-to-train-an-ordinal-regression-with-any-classifier-6911183d2a3c)
 
-<img src= https://github.com/mtx13/NLP_Employee_Performance/blob/main/ninebox_matrix.png >
+![Happy Christmas](images/ninebox_matrix.png)
 
 
 
