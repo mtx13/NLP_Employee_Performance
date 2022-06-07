@@ -8,8 +8,9 @@ Predicting employee performance rating based on the feedback text that was provi
 3. [File Descriptions](#files)
 4. [Data Files](#data)
 5. [Target Values - Employee Performance Rating](#categories)
-6. [Results](#results)
-7. [Licensing, Authors, and Acknowledgements](#licensing)
+6. [Testing](#testing)
+7. [Results](#results)
+8. [Licensing, Authors, and Acknowledgements](#licensing)
 
 ---
 
@@ -114,14 +115,33 @@ And represented in this nine-box matrix:
 ![NineBoxMatrix](images/ninebox_matrix.png)
 
 
+---
+
+## Testing<a name="testing"></a>
+
+To test the variations, code must be modified slightly. There was an attempt to more dynamically test all scenarios but ultimately my local system did not have the memory needed. 
+
+Exclusion of the sentiment scoring can be achieved by commenting the 'sentiment' step in the FeatureUnion
+
+text_union = FeatureUnion([
+    ('sentiment', text_transformer),
+    ('tfidf',TfidfVectorizer(tokenizer=tokenize ))
+])
+
+
+To include/exclude the OrdinalClassifier, commenting the appropriate line within the pipeline is necessary.
+
+#model predict using XGBClassifier
+#('clf', XGBClassifier(use_label_encoder=False, verbosity = 0))
+('clf', OrdinalClassifier(XGBClassifier(use_label_encoder=False, verbosity = 0)))
 
 
 ---
 ## Results<a name="results"></a>
 
-Addition of the sentiment scoring increase the weighted f1 score by 28.5%. Inclusion of the Ordinal Classifier actually dropped the f1 score by 3.2%. The sentiment scoring can definitely aid in the predictions but with the max f1 score of 0.39, deep learning is likely still a better option. 
+Addition of the sentiment scoring increase the weighted f1 score by 8.7%. The sentiment scoring did aid in the predictions but with the max f1 score of 0.39, deep learning is likely still a better option. 
 
-The performance categories were presented as a nine-box matrix and also as ordinal numbers. This project seems to indicate that performance ratings are best represented as that nine-box matrix. 
+Inclusion of the Ordinal Classifier actually dropped the f1 score by 6.0%. This project seems to indicate that performance ratings are best represented as that nine-box matrix and not as an ordered list. 
 
 A full discussion of the results can be found at the blog post available [here](https://medium.com/@marcellatietjen/nlp-and-employee-performance-ratings-9d37956c388e).
 
