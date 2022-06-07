@@ -36,7 +36,7 @@ The following libraries were installed as part of this project:
   
   
   
-- BuildingPipelines-Final
+- Employee_Feedback_Sentiment_Analysis.ipynb
   -  NLTK (word_tokenize, punkt, WordNetLemmatizer, pos_tag)
   -  sklearn preprocessing (OneHotEncoder,LabelEncoder , OrdinalEncoder, FunctionTransformer, ColumnTransformer)
   -  sklearn pipeline (Pipeline, FeatureUnion)
@@ -77,14 +77,17 @@ Jupyter Notebooks:
   - Inspection of the data and visualizations to reveal necessary cleansing, determine accuracy measurements and identify missing data.
 
 - Employee_Feedback_Sentiment_Analysis.ipynb
-  - Model that does it all.  
+  - Final model to load and clean data, tokenize text and apply the ordinal classifier and sentiment score
+  - F1 scores and heatmaps are generated 
+
+
 ---
 ## Data Files <a name="data"></a>
 These two files were joined into a single dataset and split into train/test within the code. 
 - employee_review_mturk_dataset_test_v6_kaggle.csv
 - employee_review_mturk_dataset_v10_kaggle.csv
 
-The data files retrieved from Kaggle have 6 columns:
+Each of the data files has 6 columns:
  - unique id
  - employee name
  - nine-box performance rating
@@ -123,17 +126,17 @@ To test the variations, code must be modified slightly. There was an attempt to 
 
 Exclusion of the sentiment scoring can be achieved by commenting the 'sentiment' step in the FeatureUnion
 
-text_union = FeatureUnion([
-    ('sentiment', text_transformer),
-    ('tfidf',TfidfVectorizer(tokenizer=tokenize ))
-])
+      text_union = FeatureUnion([
+          ('sentiment', text_transformer),
+          ('tfidf',TfidfVectorizer(tokenizer=tokenize ))
+      ])
 
 
 To include/exclude the OrdinalClassifier, commenting the appropriate line within the pipeline is necessary.
 
-#model predict using XGBClassifier
-#('clf', XGBClassifier(use_label_encoder=False, verbosity = 0))
-('clf', OrdinalClassifier(XGBClassifier(use_label_encoder=False, verbosity = 0)))
+      #model predict using XGBClassifier
+      #('clf', XGBClassifier(use_label_encoder=False, verbosity = 0))
+      ('clf', OrdinalClassifier(XGBClassifier(use_label_encoder=False, verbosity = 0)))
 
 
 ---
