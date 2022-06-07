@@ -126,11 +126,6 @@ To test the variations, code must be modified slightly. There was an attempt to 
 
 Exclusion of the sentiment scoring can be achieved by commenting the 'sentiment' step in the FeatureUnion
 
-
-![NineBoxMatrix](images/code-ExcludeSentimentScore.jpg)
-
-
-
       text_union = FeatureUnion([
           ('sentiment', text_transformer),
           ('tfidf',TfidfVectorizer(tokenizer=tokenize ))
@@ -147,7 +142,7 @@ To include/exclude the OrdinalClassifier, commenting the appropriate line within
 ---
 ## Results<a name="results"></a>
 
-Addition of the sentiment scoring increase the weighted f1 score by 8.7%. The sentiment scoring did aid in the predictions but with the max f1 score of 0.39, deep learning is likely still a better option. 
+Addition of the sentiment scoring did increase the weighted f1 score by 8.7%. The sentiment scoring did aid in the predictions but with the max f1 score of 0.39, deep learning is likely still a better option. 
 
 Inclusion of the Ordinal Classifier actually dropped the f1 score by 6.0%. This project seems to indicate that performance ratings are best represented as that nine-box matrix and not as an ordered list. 
 
