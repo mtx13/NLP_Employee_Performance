@@ -146,7 +146,7 @@ Addition of the sentiment scoring did increase the weighted f1 score by 8.7%. Th
 
 Inclusion of the Ordinal Classifier actually dropped the f1 score by 6.0%. This project seems to indicate that performance ratings are best represented as that nine-box matrix and not as an ordered list. 
 
-A full discussion of the results can be found at the blog post available [here](https://medium.com/@marcellatietjen/nlp-and-employee-performance-ratings-9d37956c388e).
+A full discussion of the results can be found at the blog post available [here](https://medium.com/@marcellatietjen/sentiment-scoring-your-employee-review-a8c315847586).
 
 ---
 ## Licensing, Authors, Acknowledgements<a name="licensing"></a>
