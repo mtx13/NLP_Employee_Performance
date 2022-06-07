@@ -126,6 +126,11 @@ To test the variations, code must be modified slightly. There was an attempt to 
 
 Exclusion of the sentiment scoring can be achieved by commenting the 'sentiment' step in the FeatureUnion
 
+
+![NineBoxMatrix](images/code-ExcludeSentimentScore.jpg)
+
+
+
       text_union = FeatureUnion([
           ('sentiment', text_transformer),
           ('tfidf',TfidfVectorizer(tokenizer=tokenize ))
