@@ -119,11 +119,9 @@ And represented in this nine-box matrix:
 ---
 ## Results<a name="results"></a>
 
-Addition of the sentiment scoring increase the weighted f1 score by 22%. Inclusion of the Ordinal Classifier actually dropped the score. 
+Addition of the sentiment scoring increase the weighted f1 score by 28.5%. Inclusion of the Ordinal Classifier actually dropped the f1 score by 3.2%. The sentiment scoring can definitely aid in the predictions but with the max f1 score of 0.39, deep learning is likely still a better option. 
 
 The performance categories were presented as a nine-box matrix and also as ordinal numbers. This project seems to indicate that performance ratings are best represented as that nine-box matrix. 
-
-The sentiment scoring can definitely aid in the predictions but with the max f1 score of 0.39, deep learning is still a better option.
 
 A full discussion of the results can be found at the blog post available [here](https://medium.com/@marcellatietjen/nlp-and-employee-performance-ratings-9d37956c388e).
 
